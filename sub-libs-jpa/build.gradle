@@ -1,10 +1,11 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.1.5'
+    // 서브 라이브러리 모듈로, Spring-boot Plugin을 apply false 처리 함
+    id 'org.springframework.boot' version '3.1.5' apply false
     id 'io.spring.dependency-management' version '1.1.3'
 }
 
-group = 'net.youngro.apps.web'
+group = 'net.youngro.libs.jpa'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -15,26 +16,25 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+	imports {
+		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+	}
+}
+
 dependencies {
     // Spring boot - 기본
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-    // Spring boot - Actuator
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter'
 
     // Persistence Layer - JPA & MySQL
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'mysql:mysql-connector-java:8.0.33'
     runtimeOnly 'com.mysql:mysql-connector-j'
-
+    
     // Data Class 처리 간소화를 위한 Lombok
     annotationProcessor 'org.projectlombok:lombok'
     compileOnly 'org.projectlombok:lombok'
 
-    // 서브 프로젝트
-    implementation project(':sub-libs-common')
-    implementation project(':sub-libs-jpa')
-    
     // String boot - 단위 테스트
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
