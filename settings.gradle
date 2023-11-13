@@ -3,6 +3,7 @@ rootProject.name = 'web'
 // 서브 라이브러리
 include 'sub-libs-common'
 include 'sub-libs-jpa'
+include 'sub-libs-redis'
 
 // 서브 앱
 include 'sub-apps-web'

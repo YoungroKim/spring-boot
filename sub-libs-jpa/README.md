@@ -1,9 +1,3 @@
-# 활성화된 프로필 정보
-spring.profiles.active = develop
-
-# 서버의 서비스 포트
-server.port: 8001
-
 # 데이터베이스 정보
 spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
 spring.datasource.url = jdbc:mysql://localhost:3306/youngronet?serverTimezone=Asia/Seoul
@@ -15,7 +9,3 @@ spring.jpa.show-sql = true
 spring.jpa.hibernate.ddl-auto = update
 ## Query 가동성 향상을 위한 포멧 설정 여부
 spring.jpa.properties.hibernate.format_sql = true
-
-# REDIS 정보
-spring.data.redis.host = 'localhost'
-spring.data.redis.port = 6379
